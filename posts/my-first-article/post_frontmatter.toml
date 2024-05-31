@@ -1,0 +1,8 @@
+title = 'Article no :1'
+file_name = 'my-first-article'
+description = 'The first article authored by me'
+tags = ['']
+posted = '31/05/2024'
+estimated_reading_time = 10
+author = 'Thulasi Veeraragavan' 
+order = 1
