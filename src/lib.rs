@@ -29,7 +29,9 @@ pub fn start_blog(listener: TcpListener) -> Result<Server, std::io::Error> {
             .wrap(middleware::Logger::default())
             .service(Files::new("/static", "static/").use_last_modified(true))
             .route("/health", web::get().to(HttpResponse::Ok))
-            .service(handlers::index) 
+            .service(handlers::index)
+            .service(handlers::about)
+            .service(handlers::contact) 
             .service(handlers::post)
     })
     .listen(listener)?

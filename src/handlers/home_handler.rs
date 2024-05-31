@@ -82,3 +82,26 @@ pub async fn index(templates: web::Data<tera::Tera>) -> impl Responder {
         }
     }
 }
+#[get("/about")]
+pub async fn about(tmpl: web::Data<tera::Tera>) -> impl Responder {
+    let context = tera::Context::new();
+    match tmpl.render("about.html", &context) {
+        Ok(s) => HttpResponse::Ok().content_type("text/html").body(s),
+        Err(e) => {
+            println!("{:?}", e);
+            HttpResponse::InternalServerError().content_type("text/html").body("Internal Server Error")
+        }
+    }
+}
+
+#[get("/contact")]
+pub async fn contact(tmpl: web::Data<tera::Tera>) -> impl Responder {
+    let context = tera::Context::new();
+    match tmpl.render("contact.html", &context) {
+        Ok(s) => HttpResponse::Ok().content_type("text/html").body(s),
+        Err(e) => {
+            println!("{:?}", e);
+            HttpResponse::InternalServerError().content_type("text/html").body("Internal Server Error")
+        }
+    }
+}

@@ -7,17 +7,21 @@
     <h3 class="text-center text-lg mt-2 text-gray-600">More words describing the blog here</h3>
     {% for fm in posts %}
     <a class="mb-3" href="/posts/{{fm.file_name}}">
-        <div class="flex flex-col mb-5 px-4 py-6 cursor-pointer">
+        <div class="flex flex-col mb-5 px-4 py-6 bg-white shadow-md rounded-lg cursor-pointer transform hover:scale-105 transition-transform duration-300">
             <h2 class="text-2xl font-semibold hover:underline">{{fm.title}}</h2>
             <div class="flex items-center mt-2">
                 <p class="hidden md:block text-base ml-2 mr-2">{{fm.posted}}</p>
                 <p class="hidden md:block text-base mx-2">{{fm.author}}</p>
-                <p class="text-base ml-0 md:ml-2">Reading time:
-                {{fm.estimated_reading_time}} min</p>
+                <p class="text-base ml-0 md:ml-2">Reading time: {{fm.estimated_reading_time}} min</p>
+            </div>
+            <p class="mt-2 text-gray-600">{{fm.description}}</p>
+            <div class="mt-2">
+                {% for tag in fm.tags %}
+                <span class="bg-blue-500 text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded">{{ tag }}</span>
+                {% endfor %}
             </div>
         </div>
     </a>
     {% endfor %}
 </div>
 {% endblock content %}
-
